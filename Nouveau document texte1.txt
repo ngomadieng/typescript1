@@ -1,0 +1,45 @@
+import React from 'react';
+
+// Définir une interface pour les props du composant Greeting
+interface GreetingProps {
+    name: string; // Le prop 'name' doit être de type string
+}
+
+// Composant fonctionnel Greeting avec typage des props
+const Greeting: React.FC<GreetingProps> = ({ name }) => {
+    return <div>Bonjour, {name} !</div>; // Affiche un message de salutation
+};
+
+export default Greeting; // Exporter le composant Greeting
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import React, { Component } from 'react';
+
+// Définir une interface pour l'état du composant Counter
+interface CounterState {
+    count: number; // L'état 'count' doit être de type number
+}
+
+// Classe Counter qui étend React.Component avec les types d'état
+class Counter extends Component<{}, CounterState> {
+    // Initialiser l'état dans le constructeur
+    state: CounterState = {
+        count: 0, // Valeur initiale de count
+    };
+
+    // Méthode pour incrémenter le compteur
+    increment = () => {
+        this.setState({ count: this.state.count + 1 }); // Incrémente le compteur
+    };
+
+    // Méthode de rendu
+    render() {
+        return (
+            <div>
+                <p>Count : {this.state.count}</p> {/* Affiche le compteur */}
+                <button onClick={this.increment}>Increment</button> {/* Bouton pour incrémenter */}
+            </div>
+        );
+    }
+}
+
+export default Counter; // Exporter le composant Counter
